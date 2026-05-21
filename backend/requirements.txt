@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+pandas
+numpy
+scikit-learn
+tensorflow
+sentence-transformers
+transformers
+torch
+python-multipart
+requests

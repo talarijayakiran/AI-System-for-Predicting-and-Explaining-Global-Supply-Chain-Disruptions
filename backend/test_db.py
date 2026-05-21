@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-
+from app.core.database import engine
 DATABASE_URL = "postgresql://postgres:jai484@localhost:5432/supplychain_db"
 
 try:
@@ -14,3 +14,6 @@ try:
 except Exception as e:
     print("Connection failed!")
     print(e)
+    
+
+print(engine)

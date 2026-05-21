@@ -1,0 +1,4 @@
+port_name,container_volume,avg_delay_hours,congestion_level,weather_score,disruption_risk
+Los Angeles,15000,42,0.82,0.71,0.91
+Shanghai,12000,15,0.31,0.25,0.22
+Singapore,18000,50,0.90,0.81,0.95
