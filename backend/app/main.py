@@ -12,6 +12,10 @@ from app.api.copilot import (
 from fastapi.middleware.cors import (
     CORSMiddleware
 )
+from app.api.live_metrics import (
+
+    router as live_router
+)
 
 app = FastAPI(
     title="Supply Chain AI Platform",
@@ -43,7 +47,7 @@ app.include_router(rag_router)
 app.include_router(
     copilot_router
 )
-
+app.include_router(live_router)
 @app.get("/")
 def root():
     return {

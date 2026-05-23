@@ -17,21 +17,21 @@ import {
 } from "recharts"
 
 
-type Analytics = {
+type LiveMetric = {
 
   port: string
 
-  average_risk: number
+  risk: number
 
-  average_delay: number
+  delay_hours: number
 
-  status: string
+  congestion: number
 }
 
 
 type Props = {
 
-  data: Analytics[]
+  data: LiveMetric[]
 }
 
 
@@ -43,20 +43,22 @@ export default function RiskChart({
 
   return (
 
-    <div className="mt-12">
+    <div>
 
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl font-bold mb-2">
 
         Disruption Risk Analysis
-    <p className="text-gray-400 mb-4">
 
-  Live disruption probability
-  across major global ports
-
-</p>
       </h2>
 
-      <div className="bg-black border rounded-xl p-4">
+      <p className="text-gray-400 mb-4">
+
+        Live disruption probability
+        across major global ports
+
+      </p>
+
+      <div className="border border-gray-800 bg-[#0a0a0a] rounded-2xl p-4">
 
         <ResponsiveContainer
           width="100%"
@@ -70,18 +72,26 @@ export default function RiskChart({
             <YAxis />
 
             <Tooltip
-                contentStyle={{
-                    backgroundColor: "#111",
-                    border: "1px solid #333",
-                    borderRadius: "10px"
+
+              contentStyle={{
+
+                backgroundColor: "#111",
+
+                border: "1px solid #333",
+
+                borderRadius: "10px"
+
               }}
             />
 
             <Bar
-  dataKey="average_risk"
-  fill="#facc15"
-  radius={[10, 10, 0, 0]}
-/>
+
+              dataKey="risk"
+
+              fill="#facc15"
+
+              radius={[10, 10, 0, 0]}
+            />
 
           </BarChart>
 
