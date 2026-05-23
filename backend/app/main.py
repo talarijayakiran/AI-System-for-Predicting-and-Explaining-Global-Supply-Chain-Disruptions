@@ -9,10 +9,26 @@ from app.api.rag_query import router as rag_router
 from app.api.copilot import (
     router as copilot_router
 )
+from fastapi.middleware.cors import (
+    CORSMiddleware
+)
 
 app = FastAPI(
     title="Supply Chain AI Platform",
     version="1.0.0"
+)
+
+app.add_middleware(
+
+    CORSMiddleware,
+
+    allow_origins=["*"],
+
+    allow_credentials=True,
+
+    allow_methods=["*"],
+
+    allow_headers=["*"],
 )
 
 app.include_router(health_router)
