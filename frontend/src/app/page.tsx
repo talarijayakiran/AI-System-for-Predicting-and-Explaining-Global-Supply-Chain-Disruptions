@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 
 import api from "@/services/api"
-
+import EventTimeline from "@/components/EventTimeline"
 import AlertFeed from "@/components/AlertFeed"
 import DashboardCard from "@/components/DashboardCard"
 import RiskChart from "@/components/RiskChart"
@@ -123,7 +123,7 @@ export default function Home() {
       </div>
 
       <AlertFeed />
-
+      <EventTimeline />
     </main>
   )
 }

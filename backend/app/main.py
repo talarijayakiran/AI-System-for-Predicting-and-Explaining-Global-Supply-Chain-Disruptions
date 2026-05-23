@@ -16,6 +16,15 @@ from app.api.live_metrics import (
 
     router as live_router
 )
+from app.api.live_alerts import (
+
+    router as alerts_router
+)
+from app.api.event_timeline import (
+
+    router as timeline_router
+)
+
 
 app = FastAPI(
     title="Supply Chain AI Platform",
@@ -48,6 +57,8 @@ app.include_router(
     copilot_router
 )
 app.include_router(live_router)
+app.include_router(alerts_router)
+app.include_router(timeline_router)
 @app.get("/")
 def root():
     return {

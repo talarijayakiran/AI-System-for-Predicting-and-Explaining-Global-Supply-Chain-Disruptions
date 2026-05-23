@@ -1,103 +1,136 @@
-const alerts = [
+"use client"
 
-  {
+import { useEffect, useState } from "react"
 
-    severity: "HIGH",
+import api from "@/services/api"
 
-    message:
-      "Rotterdam congestion spike detected"
 
-  },
+type Alert = {
 
-  {
+  port: string
 
-    severity: "MEDIUM",
+  risk: number
 
-    message:
-      "Shanghai shipment delays increasing"
+  severity: string
 
-  },
-
-  {
-
-    severity: "HIGH",
-
-    message:
-      "Los Angeles weather instability rising"
-
-  },
-
-  {
-
-    severity: "LOW",
-
-    message:
-      "Singapore operations stabilizing"
-
-  }
-
-]
+  message: string
+}
 
 
 export default function AlertFeed() {
+
+  const [alerts, setAlerts] =
+
+    useState<Alert[]>([])
+
+
+  const fetchAlerts = async () => {
+
+    try {
+
+      const response = await api.get(
+
+        "/live-alerts"
+      )
+
+      setAlerts(response.data.alerts)
+
+    } catch (error) {
+
+      console.error(error)
+    }
+  }
+
+
+  useEffect(() => {
+
+    fetchAlerts()
+
+    const interval = setInterval(() => {
+
+      fetchAlerts()
+
+    }, 5000)
+
+    return () => clearInterval(interval)
+
+  }, [])
+
 
   return (
 
     <div className="mt-12">
 
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-2xl font-bold mb-6">
 
-        Live Operational Alerts
+        Live AI Alert Escalation Feed
 
       </h2>
 
-      <div className="border border-gray-800 bg-[#0a0a0a] rounded-2xl p-4 space-y-4">
+      <div className="space-y-4">
 
-        {alerts.map((alert, index) => {
+        {alerts.map((alert, index) => (
 
-          const severityColor =
+          <div
 
-            alert.severity === "HIGH"
+            key={index}
 
-              ? "text-red-500"
+            className="border border-gray-800
+            bg-[#0a0a0a]
+            rounded-2xl
+            p-5"
+          >
 
-              : alert.severity === "MEDIUM"
+            <div className="flex
+            justify-between
+            items-center mb-2">
 
-              ? "text-yellow-400"
+              <h3 className="font-bold text-lg">
 
-              : "text-green-400"
+                {alert.port}
 
+              </h3>
 
-          return (
+              <span className={`
 
-            <div
+                px-3 py-1 rounded-full text-sm font-bold
 
-              key={index}
+                ${alert.severity === "CRITICAL"
 
-              className="border border-gray-800 rounded-xl p-4 flex justify-between items-center hover:border-gray-600 transition-all"
-            >
+                  ? "bg-red-600"
 
-              <div>
+                  : alert.severity === "HIGH"
 
-                <p className={`font-bold ${severityColor}`}>
+                  ? "bg-orange-500"
 
-                  {alert.severity}
+                  : alert.severity === "MODERATE"
 
-                </p>
+                  ? "bg-yellow-500 text-black"
 
-                <p className="text-gray-300 mt-1">
+                  : "bg-green-600"}
 
-                  {alert.message}
+              `}>
 
-                </p>
+                {alert.severity}
 
-              </div>
-
-              <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
+              </span>
 
             </div>
-          )
-        })}
+
+            <p className="text-gray-300">
+
+              {alert.message}
+
+            </p>
+
+            <p className="text-sm text-gray-500 mt-2">
+
+              Risk Score: {alert.risk}
+
+            </p>
+
+          </div>
+        ))}
 
       </div>
 
