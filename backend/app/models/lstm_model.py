@@ -1,14 +1,26 @@
-from pathlib import Path
+import os
 import tensorflow as tf
 import joblib
 
 
-BASE_DIR = Path(__file__).resolve().parents[3]
+BASE_DIR = os.getcwd()
 
-MODEL_PATH = BASE_DIR / "ml" / "models" / "lstm_model.keras"
-SCALER_PATH = BASE_DIR / "ml" / "models" / "scaler.pkl"
+MODEL_PATH = os.path.join(
+    BASE_DIR,
+    "ml",
+    "models",
+    "lstm_model.keras"
+)
+
+SCALER_PATH = os.path.join(
+    BASE_DIR,
+    "ml",
+    "models",
+    "scaler.pkl"
+)
 
 
+print(f"Current working directory: {BASE_DIR}")
 print(f"Loading LSTM model from {MODEL_PATH}")
 print(f"Loading scaler from {SCALER_PATH}")
 
