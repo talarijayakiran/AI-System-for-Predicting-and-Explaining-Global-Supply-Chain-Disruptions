@@ -1,6 +1,7 @@
-from app.core.database import engine, Base
+from app.core.database import Base, engine
 
-from app.models.port_metrics import PortMetric
+# import every model BEFORE create_all
+from app.models.live_metric import LiveMetric
 
 print("Creating tables...")
 

@@ -1,20 +1,21 @@
 from fastapi import APIRouter
 
-from app.streaming.alert_engine import (
-
-    generate_alerts
-)
-
 router = APIRouter()
 
 
 @router.get("/live-alerts")
-
 def get_live_alerts():
-
-    alerts = generate_alerts()
-
-    return {
-
-        "alerts": alerts
-    }
+    return [
+        {
+            "severity": "High",
+            "message": "Port congestion rising in Singapore"
+        },
+        {
+            "severity": "Medium",
+            "message": "Shipment delays increasing in Rotterdam"
+        },
+        {
+            "severity": "Critical",
+            "message": "Container backlog detected in Shanghai"
+        }
+    ]

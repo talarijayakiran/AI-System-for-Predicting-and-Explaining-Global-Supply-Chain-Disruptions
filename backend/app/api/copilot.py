@@ -1,25 +1,26 @@
 from fastapi import APIRouter
-
-from app.services.copilot_service import (
-    operational_copilot
+from app.services.llm_service import (
+    generate_copilot_response
 )
 
 router = APIRouter()
 
 
 @router.post("/copilot")
-def copilot_query():
+def copilot():
 
-    query = """
-Why are shipment delays
-increasing in Rotterdam?
-"""
+    context = """
+    Current disruption risks are rising
+    across major global ports.
 
-    result = operational_copilot(
-        query
+    Analyze operational conditions
+    and recommend operational actions.
+    """
+
+    response = generate_copilot_response(
+        context
     )
 
     return {
-
-        "copilot_response": result
+        "copilot_response": response
     }
