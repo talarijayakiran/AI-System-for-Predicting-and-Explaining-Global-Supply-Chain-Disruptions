@@ -30,9 +30,7 @@ from app.api.websocket_stream import (
 from app.api.historical_risk import (
     router as historical_risk_router
 )
-from app.api.historical_risk import (
-    router as historical_router
-)
+
 app = FastAPI(
     title="Supply Chain AI Platform",
     version="1.0.0"
@@ -70,9 +68,7 @@ app.include_router(websocket_router)
 app.include_router(
     historical_risk_router
 )
-app.include_router(
-    historical_router
-)
+
 
 @app.get("/")
 def root():

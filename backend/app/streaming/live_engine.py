@@ -15,6 +15,8 @@ ports = [
 def generate_live_metrics():
     live_data = []
 
+    new_events = []
+
     for port in ports:
         risk = round(
             random.uniform(0.2, 0.95),
@@ -42,21 +44,27 @@ def generate_live_metrics():
         live_data.append(metric)
 
         if risk >= 0.7:
-            event_history.append({
+
+            severity = (
+                "Critical"
+                if risk >= 0.85
+                else "High"
+            )
+
+            event = {
                 "timestamp": datetime.utcnow().strftime(
                     "%H:%M:%S"
                 ),
                 "port": port,
-                "severity": (
-                    "Critical"
-                    if risk > 0.85
-                    else "High"
-                ),
+                "severity": severity,
                 "risk": risk,
-                "message": (
-                    f"Disruption risk elevated in {port}"
-                )
-            })
+                "message": f"Disruption risk elevated in {port}"
+            }
+
+            new_events.append(event)
+
+    if new_events:
+        event_history.extend(new_events)
 
     if len(event_history) > 50:
         del event_history[:-50]

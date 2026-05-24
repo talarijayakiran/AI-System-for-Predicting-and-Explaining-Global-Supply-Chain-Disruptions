@@ -4,4 +4,6 @@ router = APIRouter()
 
 @router.get("/health")
 def health_check():
-    return {"status": "ok"}
+    return {"status": "healthy",
+        "service": "ai-supply-chain-platform",
+        "version": "1.0.0"}

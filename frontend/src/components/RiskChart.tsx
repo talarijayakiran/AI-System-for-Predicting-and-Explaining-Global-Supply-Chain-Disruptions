@@ -33,7 +33,7 @@ export default function RiskChart({
 
       <ResponsiveContainer
         width="100%"
-        height="85%"
+        height="100%"
       >
         <BarChart data={data}>
           <XAxis dataKey="port" />

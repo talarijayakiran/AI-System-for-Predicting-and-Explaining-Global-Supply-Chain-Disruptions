@@ -1,26 +1,25 @@
-from fastapi import APIRouter
-from app.services.llm_service import (
-    generate_copilot_response
-)
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+from pydantic import BaseModel
+
+from app.core.database import get_db
+from app.services.copilot_service import generate_copilot_answer
 
 router = APIRouter()
 
 
-@router.post("/copilot")
-def copilot():
+class CopilotRequest(BaseModel):
+    question: str
 
-    context = """
-    Current disruption risks are rising
-    across major global ports.
 
-    Analyze operational conditions
-    and recommend operational actions.
-    """
+@router.post("/ask")
+def ask_copilot(payload: CopilotRequest, db: Session = Depends(get_db)):
 
-    response = generate_copilot_response(
-        context
+    answer = generate_copilot_answer(
+        db=db,
+        question=payload.question
     )
 
     return {
-        "copilot_response": response
+        "response": answer
     }

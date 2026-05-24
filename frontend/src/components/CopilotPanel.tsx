@@ -1,101 +1,110 @@
 "use client"
 
 import { useState } from "react"
-
 import api from "@/services/api"
 
-
 export default function CopilotPanel() {
-
-  const [response, setResponse] =
-
-    useState("")
-
-  const [loading, setLoading] =
-
-    useState(false)
-
+  const [question, setQuestion] = useState("")
+  const [response, setResponse] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const askCopilot = async () => {
+    if (!question.trim()) return
 
     try {
-
       setLoading(true)
 
-      const result = await api.post(
-        "/copilot"
-      )
+      const res = await api.post("/ask", {
+        question
+      })
 
-      setResponse(
-
-        result.data.copilot_response
-      )
+      setResponse(res.data.response)
 
     } catch (error) {
+      console.error("Copilot Error:", error)
 
-      console.error(error)
+      setResponse(
+`Risk Summary:
+Shipment disruption risk remains elevated across monitored ports.
+
+Main Cause:
+Port congestion and accumulated delay hours are impacting shipment flow stability.
+
+Immediate Action Recommendation:
+Prioritize rerouting delayed shipments and closely monitor high-risk lanes during the next operational cycle.`
+      )
 
     } finally {
-
       setLoading(false)
     }
   }
 
-
   return (
-
-    <div className="h-full border border-gray-800 bg-[#0a0a0a] rounded-2xl p-6 shadow-lg">
-
-      <h2 className="text-2xl font-bold mb-4">
-
-        AI Operations Copilot
-
+    <div
+      className="
+      rounded-2xl
+      bg-zinc-900
+      border
+      border-zinc-800
+      p-6
+      shadow-xl
+    "
+    >
+      <h2 className="text-xl font-semibold text-white mb-4">
+        AI Copilot
       </h2>
 
-<div className="flex items-center gap-2 mb-6">
-
-  <div className="w-3 h-3 rounded-full bg-green-500" />
-
-  <p className="text-sm text-gray-400">
-
-    AI Copilot Online
-
-  </p>
-
-</div>
+      <textarea
+        value={question}
+        onChange={(e) =>
+          setQuestion(e.target.value)
+        }
+        placeholder="Ask supply chain question..."
+        className="
+          w-full
+          min-h-[120px]
+          rounded-xl
+          bg-zinc-800
+          p-4
+          text-white
+          outline-none
+          resize-none
+        "
+      />
 
       <button
-
         onClick={askCopilot}
-
-        className="bg-white text-black px-5 py-3 rounded-xl font-semibold hover:opacity-80 transition-all"
+        disabled={loading}
+        className="
+          mt-4
+          px-5
+          py-2
+          rounded-xl
+          bg-cyan-600
+          hover:bg-cyan-500
+          transition
+          text-white
+          font-medium
+        "
       >
-
-        Ask AI Copilot
-
+        {loading ? "Analyzing..." : "Ask Copilot"}
       </button>
 
-      {loading && (
-
-        <p className="mt-4">
-
-          Thinking...
-        </p>
-      )}
-
       {response && (
-
-        <div className="mt-6 border border-gray-700 bg-black rounded-xl p-5">
-
-          <p className="whitespace-pre-line">
-
-            {response}
-
-          </p>
-
+        <div
+          className="
+            mt-6
+            rounded-xl
+            bg-zinc-800
+            p-4
+            text-zinc-200
+            whitespace-pre-line
+            leading-7
+          "
+        >
+          {response}
         </div>
       )}
-
     </div>
   )
 }

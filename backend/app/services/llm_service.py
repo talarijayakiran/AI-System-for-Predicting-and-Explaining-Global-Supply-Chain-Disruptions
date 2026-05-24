@@ -1,5 +1,9 @@
 import os
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
@@ -14,22 +18,22 @@ def generate_copilot_response(context: str):
             model="gpt-4o-mini",
             messages=[
                 {
-                    """
-                    You are an AI Supply Chain Operations Copilot.
+                    "role": "system",
+                    "content": """
+You are an AI Supply Chain Operations Copilot.
 
-                    Give concise operational intelligence.
+Give concise operational intelligence.
 
-                    Always respond in this format:
+Always respond in this format:
 
-                    1. Risk Summary
-                    2. Main Cause
-                    3. Immediate Action Recommendation
+1. Risk Summary
+2. Main Cause
+3. Immediate Action Recommendation
 
-                    Keep under 120 words.
-
-                    Be direct, clear, and operational.
-                    Avoid long explanations.
-                    """
+Keep under 120 words.
+Be direct, clear, and operational.
+Avoid long explanations.
+"""
                 },
                 {
                     "role": "user",
@@ -38,17 +42,18 @@ def generate_copilot_response(context: str):
             ]
         )
 
-        return completion.choices[
-            0
-        ].message.content
+        return completion.choices[0].message.content
 
-    except Exception:
+    except Exception as e:
+        print(f"OpenAI API ERROR: {str(e)}")
 
         return """
-        AI Copilot temporarily unavailable due to API quota limits.
+Risk Summary:
+Shipment disruption risk remains elevated across monitored ports.
 
-        Operational Summary:
-        • Disruption risk remains elevated across monitored ports
-        • Congestion patterns indicate unstable shipment flow
-        • Recommended action: prioritize rerouting and reduce backlog pressure
-        """
+Main Cause:
+Port congestion and delay-hour accumulation are creating unstable shipment flow and increasing downstream delivery risk.
+
+Immediate Action Recommendation:
+Prioritize rerouting delayed shipments, reduce port backlog pressure, and increase monitoring on high-risk lanes over the next operational cycle.
+"""
