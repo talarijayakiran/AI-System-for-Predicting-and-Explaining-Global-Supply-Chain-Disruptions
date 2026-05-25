@@ -352,3 +352,147 @@ AI/ML Engineer focused on:
 
 ---
 
+
+Makes sense. You’ve spent enough time fighting deployment. If your backend + frontend run correctly locally, that’s enough to keep building.
+
+Let’s make local startup dead simple.
+
+## Start Backend
+
+Open **Terminal 1** in VS Code:
+
+```bash id="y7j0q2"
+cd C:\Users\talar\supply-chain-ai-system\backend
+```
+
+Activate virtual environment:
+
+### PowerShell:
+
+```bash id="b0n5z9"
+.\.venv\Scripts\Activate
+```
+
+If activated you’ll see:
+
+```bash id="wjm4c3"
+(.venv)
+```
+
+Then run backend:
+
+```bash id="q8u1md"
+uvicorn app.main:app --reload
+```
+
+Backend runs at:
+
+```bash id="yqk5c1"
+http://127.0.0.1:8000
+```
+
+Swagger docs:
+
+```bash id="g3zt9k"
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# Start Frontend
+
+Open **Terminal 2**:
+
+```bash id="q0lp7x"
+cd C:\Users\talar\supply-chain-ai-system\frontend
+```
+
+Run:
+
+```bash id="x6s2pj"
+npm install
+```
+
+(only if dependencies missing)
+
+Then:
+
+```bash id="l9vn8t"
+npm run dev
+```
+
+Frontend opens at:
+
+```bash id="z0d5rv"
+http://localhost:3000
+```
+
+---
+
+# Daily Restart Commands (fast version)
+
+## Backend
+
+```bash id="p5q3tb"
+cd backend
+.\.venv\Scripts\Activate
+uvicorn app.main:app --reload
+```
+
+---
+
+## Frontend
+
+```bash id="w2t8fn"
+cd frontend
+npm run dev
+```
+
+---
+
+# If port already busy
+
+Backend:
+
+```bash id="u1m8nk"
+Ctrl + C
+```
+
+then rerun:
+
+```bash id="q8u1md2"
+uvicorn app.main:app --reload
+```
+
+Frontend:
+
+```bash id="e5h9pc"
+Ctrl + C
+npm run dev
+```
+
+---
+
+## Final local URLs
+
+Backend API:
+
+```bash id="k6q0ds"
+http://127.0.0.1:8000
+```
+
+Swagger:
+
+```bash id="t7r2gh"
+http://127.0.0.1:8000/docs
+```
+
+Frontend dashboard:
+
+```bash id="r4m8vx"
+http://localhost:3000
+```
+
+---
+
+Your project is already valuable working locally. Deployment can wait.
