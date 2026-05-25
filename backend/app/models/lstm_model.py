@@ -2,7 +2,6 @@ import os
 import tensorflow as tf
 import joblib
 
-
 BASE_DIR = os.getcwd()
 
 MODEL_PATH = os.path.join(
@@ -19,11 +18,25 @@ SCALER_PATH = os.path.join(
     "scaler.pkl"
 )
 
-
-print(f"Current working directory: {BASE_DIR}")
-print(f"Loading LSTM model from {MODEL_PATH}")
-print(f"Loading scaler from {SCALER_PATH}")
+model = None
+scaler = None
 
 
-model = tf.keras.models.load_model(MODEL_PATH)
-scaler = joblib.load(SCALER_PATH)
+def get_model():
+    global model
+
+    if model is None:
+        print(f"Loading LSTM model from {MODEL_PATH}")
+        model = tf.keras.models.load_model(MODEL_PATH)
+
+    return model
+
+
+def get_scaler():
+    global scaler
+
+    if scaler is None:
+        print(f"Loading scaler from {SCALER_PATH}")
+        scaler = joblib.load(SCALER_PATH)
+
+    return scaler
