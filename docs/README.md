@@ -1,6 +1,6 @@
-# 🚀 AI System for Predicting and Explaining Global Supply Chain Disruptions
+#  AI System for Predicting and Explaining Global Supply Chain Disruptions
 
-## 🌍 Overview
+##  Overview
 
 Modern global supply chains generate massive operational data every second:
 
@@ -21,13 +21,13 @@ This project builds a **production-oriented AI platform** capable of:
 
 ---
 
-# 🧠 Core Problem Statement
+#  Core Problem Statement
 
 Build an intelligent AI system that forecasts global supply chain disruptions using time-series deep learning and explains operational risks using future LLM-powered reasoning systems.
 
 ---
 
-# 🎯 Key Objectives
+#  Key Objectives
 
 This platform aims to simulate how modern enterprise AI systems operate internally at companies like:
 
@@ -53,7 +53,7 @@ The system focuses on:
 
 ---
 
-# 🏗️ System Architecture
+#  System Architecture
 
 ```text id="f8m2wr"
 User / Operations Team
@@ -77,7 +77,7 @@ User / Operations Team
 
 # ⚙️ Tech Stack
 
-## 🧠 AI / ML
+##  AI / ML
 
 * TensorFlow / Keras
 * LSTM Networks
@@ -91,12 +91,12 @@ User / Operations Team
 * SQLAlchemy
 * Uvicorn
 
-## 🗄 Database
+##  Database
 
-* PostgreSQL
+* PostgreSQL(neon)
 * pgAdmin
 
-## ☁️ DevOps / Infrastructure
+##  DevOps / Infrastructure
 
 * Git
 * GitHub
@@ -105,7 +105,7 @@ User / Operations Team
 
 ---
 
-# 📂 Repository Structure
+#  Repository Structure
 
 ```text id="m5q1wr"
 AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions/
@@ -153,9 +153,9 @@ AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions/
 
 ---
 
-# 🧠 Deep Learning Pipeline
+#  Deep Learning Pipeline
 
-## 1️⃣ Data Ingestion
+## 1️ Data Ingestion
 
 Operational logistics data is:
 
@@ -173,7 +173,7 @@ Example operational signals:
 
 ---
 
-## 2️⃣ Feature Engineering
+## 2️ Feature Engineering
 
 The system generates intelligent temporal features such as:
 
@@ -186,7 +186,7 @@ The system generates intelligent temporal features such as:
 
 ---
 
-## 3️⃣ Sequence Generation
+## 3️ Sequence Generation
 
 Sliding windows transform historical operations into time-series learning samples.
 
@@ -200,7 +200,7 @@ predict future disruption risk
 
 ---
 
-## 4️⃣ LSTM Forecasting Model
+## 4️ LSTM Forecasting Model
 
 The platform trains an LSTM network capable of learning:
 
@@ -211,7 +211,7 @@ The platform trains an LSTM network capable of learning:
 
 ---
 
-## 5️⃣ Live Inference API
+## 5️ Live Inference API
 
 The trained model is deployed through FastAPI.
 
@@ -231,7 +231,7 @@ POST /predict
 
 ---
 
-# 📊 Current API Endpoints
+#  Current API Endpoints
 
 | Endpoint             | Purpose                     |
 | -------------------- | --------------------------- |
@@ -243,7 +243,7 @@ POST /predict
 
 ---
 
-# 🧠 Why This Project Matters
+#  Why This Project Matters
 
 Most ML portfolio projects stop at:
 
@@ -265,7 +265,7 @@ This reflects real-world ML systems engineering practices.
 
 ---
 
-# 🔥 Key Engineering Concepts Implemented
+#  Key Engineering Concepts Implemented
 
 | Domain               | Concepts                           |
 | -------------------- | ---------------------------------- |
@@ -346,8 +346,8 @@ AI/ML Engineer focused on:
 | Feature Engineering    | ✅      |
 | LSTM Forecasting       | ✅      |
 | Inference APIs         | ✅      |
-| RAG Layer              | 🔄     |
-| Frontend Dashboard     | 🔄     |
+| RAG Layer              | ✅   |
+| Frontend Dashboard     | ✅     |
 | Cloud Deployment       | 🔄     |
 
 ---
