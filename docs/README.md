@@ -1,498 +1,400 @@
-#  AI System for Predicting and Explaining Global Supply Chain Disruptions
-
-##  Overview
-
-Modern global supply chains generate massive operational data every second:
-
-* Port congestion metrics
-* Shipment delays
-* Weather disruptions
-* Logistics bottlenecks
-* Container movement fluctuations
-
-Most traditional systems only react **after disruptions occur**.
-
-This project builds a **production-oriented AI platform** capable of:
-
-✅ Predicting future supply chain disruption risk using **Deep Learning (LSTM)**
-✅ Processing operational logistics data through a real backend pipeline
-✅ Serving live AI predictions through FastAPI APIs
-✅ Laying the foundation for future **RAG + LLM-powered operational reasoning**
+Absolutely. Since you've spent many hours building this, your README should look like a professional portfolio project README rather than a student assignment.
 
 ---
 
-#  Core Problem Statement
+# AI System for Predicting and Explaining Global Supply Chain Disruptions
 
-Build an intelligent AI system that forecasts global supply chain disruptions using time-series deep learning and explains operational risks using future LLM-powered reasoning systems.
+## Overview
 
----
+AI System for Predicting and Explaining Global Supply Chain Disruptions is an end-to-end AI-powered platform designed to monitor, predict, explain, and visualize supply chain risks in real time.
 
-#  Key Objectives
+The system combines Machine Learning, Deep Learning, Retrieval-Augmented Generation (RAG), Explainable AI, Real-Time Streaming, and Interactive Dashboards to provide actionable operational intelligence for supply chain decision-makers.
 
-This platform aims to simulate how modern enterprise AI systems operate internally at companies like:
-
-* Amazon
-* Maersk
-* DHL
-* FedEx
-* Tesla
-* Walmart
-* SAP Logistics
-* Oracle SCM
-
-The system focuses on:
-
-| Capability                | Purpose                               |
-| ------------------------- | ------------------------------------- |
-| Deep Learning Forecasting | Predict future disruption probability |
-| Backend APIs              | Serve live operational predictions    |
-| Data Engineering          | Process logistics telemetry           |
-| Temporal Modeling         | Learn patterns across time            |
-| Production Architecture   | Simulate real enterprise AI systems   |
-| Future RAG Integration    | Explain disruptions intelligently     |
+The platform predicts disruption risks, explains the causes behind those risks, provides AI-generated operational recommendations, and visualizes live supply chain conditions through a modern dashboard.
 
 ---
 
-#  System Architecture
+## Key Features
 
-```text id="f8m2wr"
-User / Operations Team
-            ↓
-      FastAPI Backend
-            ↓
-     PostgreSQL Database
-            ↓
-    Feature Engineering
-            ↓
-  Time-Series Sequences
-            ↓
-      LSTM Forecasting
-            ↓
-      Prediction API
-            ↓
- Future RAG + LLM Layer
+### AI Risk Prediction
+
+* LSTM-based disruption risk forecasting
+* Time-series supply chain risk analysis
+* Predictive analytics for operational planning
+
+### Explainable AI
+
+* Risk explanation engine
+* Root cause analysis
+* Transparent prediction insights
+
+### Retrieval-Augmented Generation (RAG)
+
+* Context-aware knowledge retrieval
+* Supply chain intelligence search
+* AI-assisted operational recommendations
+
+### AI Copilot
+
+* Natural language supply chain assistant
+* Operational intelligence summaries
+* Risk mitigation recommendations
+* Decision support system
+
+### Real-Time Monitoring
+
+* Live supply chain metrics
+* WebSocket streaming
+* Continuous updates every 5 seconds
+
+### Analytics Dashboard
+
+* Historical risk trend visualization
+* Live alert feed
+* Event timeline tracking
+* Interactive operational dashboard
+
+### Backend APIs
+
+* FastAPI-powered services
+* REST API architecture
+* Real-time WebSocket endpoints
+
+---
+
+# System Architecture
+
+```text
+                    ┌─────────────────────┐
+                    │    Next.js UI       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │     FastAPI API     │
+                    └──────────┬──────────┘
+                               │
+         ┌─────────────────────┼─────────────────────┐
+         ▼                     ▼                     ▼
+
+ ┌───────────────┐    ┌────────────────┐    ┌────────────────┐
+ │ LSTM Model    │    │ RAG Engine     │    │ AI Copilot     │
+ │ Prediction    │    │ Retrieval      │    │ Intelligence   │
+ └───────────────┘    └────────────────┘    └────────────────┘
+
+         ▼                     ▼                     ▼
+
+                 ┌─────────────────────────┐
+                 │ PostgreSQL Database     │
+                 └─────────────────────────┘
 ```
 
 ---
 
-# ⚙️ Tech Stack
-
-##  AI / ML
-
-* TensorFlow / Keras
-* LSTM Networks
-* NumPy
-* Pandas
-* Scikit-learn
-
-## ⚙️ Backend
-
-* FastAPI
-* SQLAlchemy
-* Uvicorn
-
-##  Database
-
-* PostgreSQL(neon)
-* pgAdmin
-
-##  DevOps / Infrastructure
-
-* Git
-* GitHub
-* Virtual Environments
-* REST APIs
-
----
-
-#  Repository Structure
-
-```text id="m5q1wr"
-AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions/
-│
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── analytics.py
-│   │   │   ├── dashboard.py
-│   │   │   ├── health.py
-│   │   │   ├── predict.py
-│   │   │   └── upload.py
-│   │   │
-│   │   ├── core/
-│   │   │   ├── config.py
-│   │   │   └── database.py
-│   │   │
-│   │   ├── models/
-│   │   │   ├── lstm_model.py
-│   │   │   └── port_metrics.py
-│   │   │
-│   │   └── main.py
-│   │
-│   ├── scripts/
-│   │   └── generate_data.py
-│   │
-│   ├── requirements.txt
-│   └── create_tables.py
-│
-├── ml/
-│   ├── data/
-│   ├── models/
-│   └── training/
-│       ├── load_data.py
-│       ├── feature_engineering.py
-│       ├── create_sequences.py
-│       ├── prepare_training_data.py
-│       └── train_lstm.py
-│
-├── frontend/          # upcoming
-├── rag/               # upcoming
-├── infra/             # upcoming
-└── README.md
-```
-
----
-
-#  Deep Learning Pipeline
-
-## 1️ Data Ingestion
-
-Operational logistics data is:
-
-* Uploaded via CSV
-* Processed through FastAPI
-* Stored in PostgreSQL
-
-Example operational signals:
-
-* container_volume
-* avg_delay_hours
-* congestion_level
-* weather_score
-* disruption_risk
-
----
-
-## 2️ Feature Engineering
-
-The system generates intelligent temporal features such as:
-
-| Feature                 | Purpose                       |
-| ----------------------- | ----------------------------- |
-| delay_rolling_mean      | delay trend analysis          |
-| congestion_rolling_mean | operational buildup detection |
-| weather_rolling_mean    | weather trend tracking        |
-| risk_change             | disruption acceleration       |
-
----
-
-## 3️ Sequence Generation
-
-Sliding windows transform historical operations into time-series learning samples.
-
-Example:
-
-```text id="r4m7vx"
-[t1, t2, t3, t4, t5]
-            ↓
-predict future disruption risk
-```
-
----
-
-## 4️ LSTM Forecasting Model
-
-The platform trains an LSTM network capable of learning:
-
-* congestion escalation
-* delay propagation
-* weather deterioration patterns
-* operational instability
-
----
-
-## 5️ Live Inference API
-
-The trained model is deployed through FastAPI.
-
-### Example Endpoint
-
-```http id="q8m1wr"
-POST /predict
-```
-
-### Example Response
-
-```json id="u5q2vx"
-{
-  "predicted_disruption_risk": 0.6557810306549072
-}
-```
-
----
-
-#  Current API Endpoints
-
-| Endpoint             | Purpose                     |
-| -------------------- | --------------------------- |
-| `/health`            | system health monitoring    |
-| `/dashboard`         | operational dashboard data  |
-| `/analytics/summary` | analytics aggregation       |
-| `/upload/csv`        | logistics data ingestion    |
-| `/predict`           | LSTM disruption forecasting |
-
----
-
-#  Why This Project Matters
-
-Most ML portfolio projects stop at:
-
-```text id="x1m7kp"
-notebook → train model
-```
-
-This project goes significantly further:
-
-✅ Backend engineering
-✅ Database integration
-✅ Deep learning pipelines
-✅ Time-series forecasting
-✅ API deployment
-✅ Model serving
-✅ Production architecture thinking
-
-This reflects real-world ML systems engineering practices.
-
----
-
-#  Key Engineering Concepts Implemented
-
-| Domain               | Concepts                           |
-| -------------------- | ---------------------------------- |
-| ML Engineering       | feature engineering, preprocessing |
-| Deep Learning        | LSTM forecasting                   |
-| Backend Engineering  | REST APIs, FastAPI                 |
-| Database Engineering | PostgreSQL integration             |
-| MLOps Foundations    | model persistence, inference       |
-| Systems Design       | modular architecture               |
-
----
-
-# 🚀 Upcoming Features
-
-## 🔄 In Progress
-
-* Frontend Dashboard (Next.js)
-* RAG-based operational explanations
-* Vector embeddings
-* AI operational assistant
-* Real-time streaming simulation
-* Dockerization
-* AWS deployment
-* CI/CD pipelines
-
----
-
-# 🌍 Future Vision
-
-The long-term goal is to evolve this project into a fully operational:
-
-# 🧠 AI-Powered Supply Chain Intelligence Platform
-
-capable of:
-
-* Predicting disruptions
-* Explaining root causes
-* Retrieving similar incidents
-* Supporting operational decision-making
-* Providing conversational AI analysis
-
----
-
-# ⚠️ Important Note
-
-This project is intentionally designed with:
-
-* production-oriented architecture
-* modular AI pipelines
-* backend-first engineering principles
-
-rather than being a simple notebook demonstration project.
-
----
-
-# 🧑‍💻 Author
-
-## Talari Jaya Kiran
-
-AI/ML Engineer focused on:
-
-* Machine Learning Systems
-* Deep Learning
-* MLOps
-* AI Infrastructure
-* Production AI Platforms
-
----
-
-# ⭐ Project Status
-
-## ✅ Current Status
-
-| Module                 | Status |
-| ---------------------- | ------ |
-| Backend APIs           | ✅      |
-| PostgreSQL Integration | ✅      |
-| Feature Engineering    | ✅      |
-| LSTM Forecasting       | ✅      |
-| Inference APIs         | ✅      |
-| RAG Layer              | ✅   |
-| Frontend Dashboard     | ✅     |
-| Cloud Deployment       | 🔄     |
-
----
-
-
-Makes sense. You’ve spent enough time fighting deployment. If your backend + frontend run correctly locally, that’s enough to keep building.
-
-Let’s make local startup dead simple.
-
-## Start Backend
-
-Open **Terminal 1** in VS Code:
-
-```bash id="y7j0q2"
-cd C:\Users\talar\supply-chain-ai-system\backend
-```
-
-Activate virtual environment:
-
-### PowerShell:
-
-```bash id="b0n5z9"
-.\.venv\Scripts\Activate
-```
-
-If activated you’ll see:
-
-```bash id="wjm4c3"
-(.venv)
-```
-
-Then run backend:
-
-```bash id="q8u1md"
-uvicorn app.main:app --reload
-```
-
-Backend runs at:
-
-```bash id="yqk5c1"
-http://127.0.0.1:8000
-```
-
-Swagger docs:
-
-```bash id="g3zt9k"
-http://127.0.0.1:8000/docs
-```
-
----
-
-# Start Frontend
-
-Open **Terminal 2**:
-
-```bash id="q0lp7x"
-cd C:\Users\talar\supply-chain-ai-system\frontend
-```
-
-Run:
-
-```bash id="x6s2pj"
-npm install
-```
-
-(only if dependencies missing)
-
-Then:
-
-```bash id="l9vn8t"
-npm run dev
-```
-
-Frontend opens at:
-
-```bash id="z0d5rv"
-http://localhost:3000
-```
-
----
-
-# Daily Restart Commands (fast version)
-
-## Backend
-
-```bash id="p5q3tb"
-cd backend
-.\.venv\Scripts\Activate
-uvicorn app.main:app --reload
-```
-
----
+# Technology Stack
 
 ## Frontend
 
-```bash id="w2t8fn"
-cd frontend
-npm run dev
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Recharts
+* Axios
+
+## Backend
+
+* FastAPI
+* Python
+* SQLAlchemy
+* Pydantic
+* Uvicorn
+
+## Machine Learning
+
+* TensorFlow
+* Keras
+* NumPy
+* Pandas
+* Scikit-Learn
+
+## Database
+
+* PostgreSQL
+
+## AI Components
+
+* LSTM
+* Explainable AI
+* Retrieval-Augmented Generation (RAG)
+* OpenAI Integration
+
+## Real-Time
+
+* WebSockets
+* AsyncIO
+
+---
+
+# Project Structure
+
+```text
+AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions
+│
+├── backend
+│   │
+│   ├── app
+│   │   ├── api
+│   │   ├── core
+│   │   ├── models
+│   │   ├── services
+│   │   ├── streaming
+│   │   └── main.py
+│   │
+│   ├── ml
+│   │   └── models
+│   │       ├── lstm_model.keras
+│   │       └── scaler.pkl
+│   │
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+├── frontend
+│   │
+│   ├── src
+│   │   ├── app
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── services
+│   │   └── types
+│   │
+│   ├── public
+│   ├── package.json
+│   └── Dockerfile
+│
+├── docs
+│
+├── infra
+│
+├── rag
+│
+├── README.md
+│
+└── .gitignore
 ```
 
 ---
 
-# If port already busy
+# API Endpoints
 
-Backend:
+## Prediction API
 
-```bash id="u1m8nk"
-Ctrl + C
+```http
+POST /predict
 ```
 
-then rerun:
+Predicts supply chain disruption risk.
 
-```bash id="q8u1md2"
+---
+
+## Explainability API
+
+```http
+POST /explain
+```
+
+Explains disruption prediction results.
+
+---
+
+## RAG Query API
+
+```http
+POST /query
+```
+
+Retrieves relevant supply chain intelligence.
+
+---
+
+## AI Copilot API
+
+```http
+POST /ask
+```
+
+Generates operational recommendations.
+
+---
+
+## Historical Risk API
+
+```http
+GET /historical-risk
+```
+
+Returns historical risk metrics.
+
+---
+
+## Live Alerts API
+
+```http
+GET /live-alerts
+```
+
+Returns active supply chain alerts.
+
+---
+
+## Event Timeline API
+
+```http
+GET /event-timeline
+```
+
+Returns disruption event history.
+
+---
+
+## WebSocket Streaming
+
+```http
+/ws/live
+```
+
+Streams live supply chain metrics.
+
+---
+
+# Local Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/talarijayakiran/AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions.git
+```
+
+```bash
+cd AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions
+```
+
+---
+
+## Backend Setup
+
+```bash
+cd backend
+```
+
+```bash
+python -m venv .venv
+```
+
+```bash
+.\.venv\Scripts\activate
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+Create:
+
+```env
+.env
+```
+
+```env
+DATABASE_URL=your_postgresql_url
+OPENAI_API_KEY=your_openai_key
+```
+
+Start backend:
+
+```bash
 uvicorn app.main:app --reload
-```
-
-Frontend:
-
-```bash id="e5h9pc"
-Ctrl + C
-npm run dev
-```
-
----
-
-## Final local URLs
-
-Backend API:
-
-```bash id="k6q0ds"
-http://127.0.0.1:8000
 ```
 
 Swagger:
 
-```bash id="t7r2gh"
+```text
 http://127.0.0.1:8000/docs
 ```
 
-Frontend dashboard:
+---
 
-```bash id="r4m8vx"
+## Frontend Setup
+
+```bash
+cd frontend
+```
+
+```bash
+npm install
+```
+
+Create:
+
+```env
+.env.local
+```
+
+```env
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
+```
+
+Start frontend:
+
+```bash
+npm run dev
+```
+
+Dashboard:
+
+```text
 http://localhost:3000
 ```
 
 ---
 
-Your project is already valuable working locally. Deployment can wait.
+# Future Enhancements
+
+* Multi-model forecasting
+* Transformer-based forecasting
+* Reinforcement learning optimization
+* Global logistics knowledge graph
+* Advanced anomaly detection
+* Multi-region deployment
+* Cloud-native MLOps pipeline
+* Kubernetes deployment
+* Automated retraining pipeline
+
+---
+
+# Business Impact
+
+This platform helps organizations:
+
+* Detect disruption risks early
+* Reduce operational delays
+* Improve supply chain visibility
+* Optimize logistics decisions
+* Enhance resilience against disruptions
+* Enable AI-assisted decision making
+
+---
+
+# Author
+
+**Talari Jaya Kiran**
+
+Machine Learning Engineer | AI Engineer | MLOps Enthusiast
+
+GitHub:
+
+[Talari Jaya Kiran GitHub](https://github.com/talarijayakiran)
+
+---
+
+**Built using Machine Learning, Deep Learning, Explainable AI, RAG, FastAPI, PostgreSQL, Next.js, and Real-Time Streaming Technologies.**
