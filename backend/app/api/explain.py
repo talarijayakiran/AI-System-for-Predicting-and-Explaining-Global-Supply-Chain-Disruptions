@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from pydantic import BaseModel
 
 from app.services.explanation_service import (
     generate_explanation
@@ -7,26 +8,30 @@ from app.services.explanation_service import (
 router = APIRouter()
 
 
+class ExplanationRequest(BaseModel):
+
+    query: str
+
+    prediction_risk: float
+    congestion: float
+    delay: float
+    weather: float
+
+
 @router.post("/explain")
-def explain_prediction():
-
-    prediction_risk = 0.82
-
-    congestion = 0.91
-
-    delay = 52
-
-    weather = 0.76
+def explain_prediction(request: ExplanationRequest):
 
     result = generate_explanation(
 
-        prediction_risk,
+        query=request.query,
 
-        congestion,
+        prediction_risk=request.prediction_risk,
 
-        delay,
+        congestion=request.congestion,
 
-        weather
+        delay=request.delay,
+
+        weather=request.weather
     )
 
     return result

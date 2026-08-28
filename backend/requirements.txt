@@ -12,3 +12,4 @@ transformers
 torch
 python-multipart
 requests
+google-genai

@@ -1,4 +1,5 @@
 def generate_explanation(
+    query,
     prediction_risk,
     congestion,
     delay,
@@ -10,21 +11,18 @@ def generate_explanation(
     if congestion > 0.8:
 
         reasons.append(
-
             "Port congestion levels increased significantly."
         )
 
     if delay > 40:
 
         reasons.append(
-
             "Average shipment delays are critically high."
         )
 
     if weather > 0.7:
 
         reasons.append(
-
             "Weather conditions are negatively impacting operations."
         )
 
@@ -44,7 +42,11 @@ def generate_explanation(
 
     return {
 
+        "query": query,
+
         "risk_level": risk_level,
+
+        "prediction_risk": prediction_risk,
 
         "explanation": explanation
     }
