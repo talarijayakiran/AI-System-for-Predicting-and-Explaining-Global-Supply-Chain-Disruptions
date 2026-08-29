@@ -1,0 +1,38 @@
+.venv/
+venv/
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.git/
+.gitignore
+
+.env
+.env.*
+
+*.log
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+.ipynb_checkpoints/
+
+# Do NOT exclude runtime ML/RAG artifacts.
+# The application needs:
+# ml/models/lstm_model.keras
+# ml/models/scaler.pkl
+# rag/data/incidents.csv
+# rag/embeddings/incident_embeddings.npy
+
+temp/
+tmp/
+
+.vscode/
+.idea/
+
+README.md
+
+frontend/node_modules/
