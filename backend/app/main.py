@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 from app.api.predict import router as predict_router
 from app.api.healthy import router as health_router
 from app.api.dashboard import router as dashboard_router
@@ -31,23 +31,24 @@ from app.api.historical_risk import (
     router as historical_risk_router
 )
 
+from app.core.database import Base, engine
+
+if engine is not None:
+    Base.metadata.create_all(bind=engine)
+
 app = FastAPI(
     title="Supply Chain AI Platform",
     version="1.0.0"
 )
 
 app.add_middleware(
-
     CORSMiddleware,
-
     allow_origins=["*"],
-
-    allow_credentials=True,
-
+    allow_credentials=False,
     allow_methods=["*"],
-
     allow_headers=["*"],
 )
+
 
 app.include_router(health_router)
 
@@ -75,3 +76,6 @@ def root():
     return {
         "message": "Supply Chain AI Platform Running"
     }
+
+
+

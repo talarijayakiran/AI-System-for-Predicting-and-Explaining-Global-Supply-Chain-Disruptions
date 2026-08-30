@@ -311,35 +311,29 @@ export default function DashboardPage() {
 
 
       /*
-       * Select WebSocket protocol based
-       * on current browser protocol.
+       * Derive WebSocket URL:
+       * - In production (remote domain / EC2 IP), converts HTTP/HTTPS to WS/WSS
+       * - In local development, dynamically matches current browser host (localhost / 127.0.0.1)
        */
 
-      const protocol =
-        window.location.protocol === "https:"
-          ? "wss:"
-          : "ws:"
+      let websocketUrl = ""
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
+      if (apiUrl && !apiUrl.includes("localhost") && !apiUrl.includes("127.0.0.1")) {
+        const wsBase = apiUrl.replace(/^http:/i, "ws:").replace(/^https:/i, "wss:")
+        websocketUrl = `${wsBase.replace(/\/+$/, "")}/ws/live`
+      } else {
+        const protocol =
+          window.location.protocol === "https:"
+            ? "wss:"
+            : "ws:"
 
-      /*
-       * Use the current browser hostname.
-       *
-       * This allows:
-       *
-       * localhost
-       * EC2 public IP
-       * domain name
-       *
-       * without hardcoding the frontend host.
-       */
+        const host =
+          window.location.hostname || "localhost"
 
-      const host =
-        window.location.hostname
-
-
-      const websocketUrl =
-        `${protocol}//${host}:8000/ws/live`
-
+        websocketUrl =
+          `${protocol}//${host}:8000/ws/live`
+      }
 
       console.log(
         "[Dashboard] Connecting WebSocket:",

@@ -34,7 +34,7 @@ gemini_client = genai.Client(
 # PATH CONFIGURATION
 # ============================================================
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 
 INCIDENTS_PATH = (
     BASE_DIR
