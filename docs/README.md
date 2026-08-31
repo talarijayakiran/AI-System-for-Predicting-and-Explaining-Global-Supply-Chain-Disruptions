@@ -3,8 +3,8 @@
 > **Predict. Explain. Retrieve. Monitor.**
 
 An end-to-end AI engineering system that combines machine-learning-based disruption risk prediction, retrieval-augmented operational intelligence, real-time monitoring, analytics, and a deployed web application.
-
-[![Live Application](https://img.shields.io/badge/Live%20Application-Vercel-black?style=for-the-badge)](https://global-supply-chain-ai.vercel.app)
+[![Live Application](https://img.shields.io/badge/🚀%20Live%20Application-Open%20App-black?style=for-the-badge)](https://global-supply-chain-ai.vercel.app)
+[![60-Second Demo](https://img.shields.io/badge/▶%20Watch%2060--Second%20Demo-f43f5e?style=for-the-badge)](https://drive.google.com/file/d/1XsjibyN2-desBpQIstYaWOYqbe2QDWO5/view?usp=drive_link)
 [![Source Code](https://img.shields.io/badge/Source%20Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/talarijayakiran/AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions)
 
 ##  Live Application
@@ -17,11 +17,11 @@ An end-to-end AI engineering system that combines machine-learning-based disrupt
 
 ## 🎥 60-Second Product Demo
 
-[![Watch 60-Second Demo](https://img.shields.io/badge/▶%20Watch%2060--Second%20Demo-f43f5e?style=for-the-badge)](https://github.com/talarijayakiran/AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions/releases/tag/demo-v1)
+[![▶ Watch 60-Second Demo](https://img.shields.io/badge/%E2%96%B6%20Watch%2060--Second%20Demo-f43f5e?style=for-the-badge)](https://drive.google.com/file/d/1XsjibyN2-desBpQIstYaWOYqbe2QDWO5/view?usp=drive_link)
 
-> A 60-second walkthrough of the deployed AI supply-chain platform, covering
-> disruption-risk prediction, RAG-powered operational intelligence,
-> historical analysis, and real-time monitoring.
+> A 60-second walkthrough of the deployed AI supply-chain platform,
+> covering disruption-risk prediction, RAG-powered operational
+> intelligence, historical analysis, and real-time monitoring.
 
 ## 💡 What Problem Does This Solve?
 
