@@ -17,13 +17,11 @@ An end-to-end AI engineering system that combines machine-learning-based disrupt
 
 ## 🎥 60-Second Product Demo
 
-**Watch the system in action:** `DEMO_VIDEO_URL`
+[![Watch 60-Second Demo](https://img.shields.io/badge/▶%20Watch%2060--Second%20Demo-f43f5e?style=for-the-badge)](https://github.com/talarijayakiran/AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions/releases/tag/demo-v1)
 
-> The demo covers the deployed application, operational dashboard, disruption-risk analysis, RAG-powered operational intelligence, historical analysis, and real-time monitoring.
->
-> Replace `DEMO_VIDEO_URL` with the final public video/release URL.
-
----
+> A 60-second walkthrough of the deployed AI supply-chain platform, covering
+> disruption-risk prediction, RAG-powered operational intelligence,
+> historical analysis, and real-time monitoring.
 
 ## 💡 What Problem Does This Solve?
 
