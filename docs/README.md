@@ -3,6 +3,8 @@
 > **Predict. Explain. Retrieve. Monitor.**
 
 An end-to-end AI engineering system that combines machine-learning-based disruption risk prediction, retrieval-augmented operational intelligence, real-time monitoring, analytics, and a deployed web application.
+
+
 [![Live Application](https://img.shields.io/badge/🚀%20Live%20Application-Open%20App-black?style=for-the-badge)](https://global-supply-chain-ai.vercel.app)
 [![60-Second Demo](https://img.shields.io/badge/▶%20Watch%2060--Second%20Demo-f43f5e?style=for-the-badge)](https://drive.google.com/file/d/1XsjibyN2-desBpQIstYaWOYqbe2QDWO5/view?usp=drive_link)
 [![Source Code](https://img.shields.io/badge/Source%20Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/talarijayakiran/AI-System-for-Predicting-and-Explaining-Global-Supply-Chain-Disruptions)
